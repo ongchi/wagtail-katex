@@ -21,7 +21,7 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: Apache Software License',
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',

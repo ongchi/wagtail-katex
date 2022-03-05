@@ -1,44 +1,33 @@
-# Wagtail Katex plugin
+# wagtail-katex
 
-This will be an integration of a KaTek into the Wagtail CMS Draftail editor.
+> This package is modified from [gatensj/wagtail-draftail-katex](https://github.com/gatensj/wagtail-draftail-katex)
+
+**[KaTex](https://katex.org)** support for Wagtail RichTextField.
 
 ![Inserting an Images](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot06152018-1.png)
 
 ![Image Editor](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot06152018-2.png)
 
-## Installation
+## Quick Start
 
-- ```pip install wagtail-katek-plugin```
-- Add ```draftail_katex``` 
-to your list of installed apps AFTER all wagtail app includes 
-(e.g. wagtail.admin, wagtail.core etc).
+Install the package with
 
-## Usage
+```sh
+pip install wagtail-katex
+```
 
+Add `wagtailkatex` to your `settings.py` in the `INSTALLED_APPS` section:
 
-## Development
+```python
+INSTALLED_APPS = [
+    ...
+    "wagtailkatex",
+    ...
+]
+```
 
-Create a local virtualenv using python3
+Add `katex-embed` to `RichTextField` features:
 
-    python3 -m venv .venv3
-    source .venv3/bin/activate
-
-
-
-On windows, the ```source``` command above is different. you need to run the setup script
-
-    .venv3\Scripts\activate
-
-Install the development requirements
-
-    pip install -r requirements_dev.txt
-
-## Resources
-
-This plugin uses the KaTeX javascript renderer to render the input text to an output format. More information can be found here:
-
-    https://khan.github.io/KaTeX/
-
-Including a reference to the LaTeX Math syntax supported.
-
-
+```python
+body = RichTextField(features=[..., "katex-embed"])
+```
