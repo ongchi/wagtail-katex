@@ -2,8 +2,10 @@ node_modules
 .vscode
 .DS_Store
 .idea
-*pyc
+*.pyc
 dist
 *.egg-info/
 deploy_local
 /.venv3
+__pycache__/
+*.mo
