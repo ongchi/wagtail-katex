@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext
+from django.utils.translation import gettext
 
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail.core import hooks
@@ -23,7 +23,7 @@ def register_katex_features(features):
             {
                 'type': type_,
                 'icon': 'square-root-alt',
-                'description': ugettext('Equation'),
+                'description': gettext('Equation'),
             },
             js=[
                 'wagtailkatex/katex/katex.min.js',
