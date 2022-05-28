@@ -1,4 +1,4 @@
-# wagtail-katex
+# wagtail-katex ![Wagtail 2.x](https://img.shields.io/badge/wagtail-2.x-g.svg) ![Wagtail 3.x](https://img.shields.io/badge/wagtail-3.x-g.svg)
 
 > This package is modified from [gatensj/wagtail-draftail-katex](https://github.com/gatensj/wagtail-draftail-katex)
 

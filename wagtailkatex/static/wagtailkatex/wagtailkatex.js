@@ -1,6 +1,5 @@
 (() => {
-   // This instantiates the React component as window.react
-  const $ = global.jQuery;
+  // This instantiates the React component as window.react
   const React = window.React;
   const AtomicBlockUtils = window.DraftJS.AtomicBlockUtils;
   const EditorState = window.DraftJS.EditorState;
@@ -8,12 +7,12 @@
   const Modifier = window.DraftJS.Modifier;
   const katex = window.katex;
 
-   // A React component that renders nothing.
-   // We actually create the entities directly in the componentDidMount lifecycle hook.
-   // This is used for new katex.
+  // A React component that renders nothing.
+  // We actually create the entities directly in the componentDidMount lifecycle hook.
+  // This is used for new katex.
   class KaTeXSource extends React.Component {
-    // This fires a windows prompt for new katex.  The else hanles if the user clicks cancel.
-    fireWindowsPrompt(entity, katextEquation = "c = \\sqrt{a^2 + b^2}") {
+    // This fires a windows prompt for new katex.
+    fireWindowsPrompt(_entity, katextEquation = "c = \\sqrt{a^2 + b^2}") {
       const editorState = this.props["editorState"];
       const entityType = this.props["entityType"];
       const onComplete = this.props["onComplete"];
@@ -27,7 +26,7 @@
           "MUTABLE",
           {
             text: text,
-          }
+          },
         );
 
         const entityKey = contentWithEntity.getLastCreatedEntityKey();
@@ -35,7 +34,7 @@
         const nextState = AtomicBlockUtils.insertAtomicBlock(
           editorState,
           entityKey,
-          " "
+          " ",
         );
 
         onComplete(nextState);
@@ -61,10 +60,7 @@
     fireUpdateWindowsPrompt() {
       const block = this.props["block"];
       const blockProps = this.props["blockProps"];
-      const entityKey = blockProps["entityKey"];
       const editorState = blockProps["editorState"];
-      const onRemoveEntity = blockProps["onRemoveEntity"];
-      const onEditEntity = blockProps["onEditEntity"];
       const entity = blockProps["entity"];
       const katextEquation = entity.getData()["text"];
 
@@ -87,7 +83,7 @@
           focusKey: block.getKey(),
           focusOffset: block.getLength(),
         }),
-        {}
+        {},
       );
       return EditorState.push(editorState, nextContent, "apply-entity");
     }
@@ -111,7 +107,7 @@
     }
   }
 
-  // This registers the Katex plugin. The Source is for creating new KaTex.  The block is to display the Katex in editor.
+  // This registers the Katex plugin. The Source is for creating new KaTex. The block is to display the Katex in editor.
   window.draftail.registerPlugin({
     type: "KATEX-EMBED",
     source: KaTeXSource,
