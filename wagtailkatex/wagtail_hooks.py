@@ -1,7 +1,7 @@
 from django.utils.translation import gettext
 
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
-from wagtail.core import hooks
+from wagtail import hooks
 
 from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
 
@@ -11,7 +11,8 @@ def register_katex_features(features):
     features.default_features.append('katex')
     """
     Registering the `katex` feature, which uses the `KATEX` Draft.js entity type,
-    and is stored as HTML with a `<div data-katex-embed="c = \\pm\\sqrt{a^2 + b^2}">` tag.
+    and is stored as HTML with a `<div data-katex-embed="c = \\pm\\sqrt{a^2 + b^2}">`
+    tag.
     """
     feature_name = 'katex-embed'
     type_ = 'KATEX-EMBED'
