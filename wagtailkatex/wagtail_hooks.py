@@ -23,7 +23,7 @@ def register_katex_features(features):
         draftail_features.EntityFeature(
             {
                 'type': type_,
-                'icon': 'square-root-alt',
+                'icon': 'square-root-variable',
                 'description': gettext('Equation'),
             },
             js=[
@@ -42,3 +42,10 @@ def register_katex_features(features):
         'from_database_format': {'div[data-katex-embed]': KaTeXEntityElementHandler()},
         'to_database_format': {'entity_decorators': {type_: katex_entity_decorator}},
     })
+
+
+@hooks.register('register_icons')
+def register_icons(icons):
+    return icons + [
+        "wagtailkatex/square-root-variable.svg"
+    ]
