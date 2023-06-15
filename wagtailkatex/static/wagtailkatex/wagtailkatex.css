@@ -18,7 +18,7 @@
   width: 80%;
   border: 1px #AAA solid;
   border-radius: 5px;
-  background: var(--w-color-surface-page);
+  background: var(--w-color-surface-page, #EEE);
 }
 
 #wagtailkatex-modal-input {

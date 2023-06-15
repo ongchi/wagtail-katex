@@ -8,9 +8,10 @@ from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
 
 @hooks.register('register_rich_text_features')
 def register_katex_feature(features):
-    features.default_features.append('katex')
+    features.default_features.append('katex-embed')
+
     """
-    Registering the `katex` feature, which uses the `KATEX` Draft.js entity type,
+    Registering the `katex-embed` feature, which uses the `KATEX` Draft.js entity type,
     and is stored as HTML with a `div[data-katex-embed]` tag.
     """
     feature_name = 'katex-embed'

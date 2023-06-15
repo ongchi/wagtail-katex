@@ -1,12 +1,10 @@
-# wagtail-katex ![Wagtail 2.x](https://img.shields.io/badge/wagtail-2.x-g.svg) ![Wagtail 3.x](https://img.shields.io/badge/wagtail-3.x-g.svg)
+# wagtail-katex ![Wagtail 3.x](https://img.shields.io/badge/wagtail-3.x-g.svg) ![Wagtail 4.x](https://img.shields.io/badge/wagtail-4.x-g.svg) ![Wagtail 5.x](https://img.shields.io/badge/wagtail-5.x-g.svg)
 
 > This package is modified from [gatensj/wagtail-draftail-katex](https://github.com/gatensj/wagtail-draftail-katex)
 
-**[KaTex](https://katex.org)** support for Wagtail RichTextField.
+**[KaTeX](https://katex.org)** support for Wagtail RichTextField.
 
-![Inserting an Images](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot06152018-1.png)
-
-![Image Editor](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot06152018-2.png)
+![KaTeX Editor](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot.png)
 
 ## Quick Start
 
@@ -24,10 +22,4 @@ INSTALLED_APPS = [
     "wagtailkatex",
     ...
 ]
-```
-
-Add `katex-embed` to `RichTextField` features:
-
-```python
-body = RichTextField(features=[..., "katex-embed"])
 ```
