@@ -4,7 +4,7 @@
 
 **[KaTeX](https://katex.org)** support for Wagtail RichTextField.
 
-![KaTeX Editor](https://raw.githubusercontent.com/gatensj/wagtail-draftail-katex/master/images/screenshot.png)
+![KaTeX Editor](https://raw.githubusercontent.com/ongchi/wagtail-katex/master/images/screenshot.png)
 
 ## Quick Start
 
