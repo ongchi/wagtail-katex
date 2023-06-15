@@ -7,12 +7,11 @@ from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
 
 
 @hooks.register('register_rich_text_features')
-def register_katex_features(features):
+def register_katex_feature(features):
     features.default_features.append('katex')
     """
     Registering the `katex` feature, which uses the `KATEX` Draft.js entity type,
-    and is stored as HTML with a `<div data-katex-embed="c = \\pm\\sqrt{a^2 + b^2}">`
-    tag.
+    and is stored as HTML with a `div[data-katex-embed]` tag.
     """
     feature_name = 'katex-embed'
     type_ = 'KATEX-EMBED'
@@ -33,19 +32,28 @@ def register_katex_features(features):
             css={
                 'all': [
                     'wagtailkatex/katex/katex.min.css',
+                    'wagtailkatex/wagtailkatex.css',
                 ]
-            }
-        )
+            },
+        ),
     )
 
-    features.register_converter_rule('contentstate', feature_name, {
-        'from_database_format': {'div[data-katex-embed]': KaTeXEntityElementHandler()},
-        'to_database_format': {'entity_decorators': {type_: katex_entity_decorator}},
-    })
+    features.register_converter_rule(
+        'contentstate',
+        feature_name,
+        {
+            'from_database_format': {
+                'div[data-katex-embed]': KaTeXEntityElementHandler()
+            },
+            'to_database_format': {
+                'entity_decorators': {type_: katex_entity_decorator}
+            },
+        },
+    )
 
 
 @hooks.register('register_icons')
 def register_icons(icons):
     return icons + [
-        "wagtailkatex/square-root-variable.svg"
+        'wagtailkatex/square-root-variable.svg',
     ]
