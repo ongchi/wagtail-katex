@@ -1,20 +1,24 @@
-# wagtail-katex ![Wagtail 3.x](https://img.shields.io/badge/wagtail-3.x-g.svg) ![Wagtail 4.x](https://img.shields.io/badge/wagtail-4.x-g.svg) ![Wagtail 5.x](https://img.shields.io/badge/wagtail-5.x-g.svg)
+![PyPI Package Version](https://img.shields.io/pypi/v/wagtail-katex)
+![Python Version](https://img.shields.io/pypi/pyversions/wagtail-cjkcms)
+![Wagtail Version](https://img.shields.io/pypi/frameworkversions/wagtail/wagtail-katex)
+![License](https://img.shields.io/github/license/ongchi/wagtail-katex)
 
-> This package is modified from [gatensj/wagtail-draftail-katex](https://github.com/gatensj/wagtail-draftail-katex)
+Math typesetting for [Wagtail CMS](https://wagtail.org/) powered by **[KaTeX](https://katex.org)**.
 
-**[KaTeX](https://katex.org)** support for Wagtail RichTextField.
+> This package is forked from [gatensj/wagtail-draftail-katex](https://github.com/gatensj/wagtail-draftail-katex).  
+> This package contains svg icon from [Font Awesome](http://fontawesome.io), which is licensed under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0).
 
-![KaTeX Editor](https://raw.githubusercontent.com/ongchi/wagtail-katex/master/images/screenshot.png)
+![KaTeX Editor Screenshot](https://raw.githubusercontent.com/ongchi/wagtail-katex/master/screenshots/screenshot_katex_editor.png)
 
 ## Quick Start
 
-Install the package with
+Install the package using the following command:
 
 ```sh
 pip install wagtail-katex
 ```
 
-Add `wagtailkatex` to your `settings.py` in the `INSTALLED_APPS` section:
+Add `wagtailkatex` to the `INSTALLED_APPS` section in your `settings.py` file:
 
 ```python
 INSTALLED_APPS = [
@@ -23,3 +27,6 @@ INSTALLED_APPS = [
     ...
 ]
 ```
+
+Now you will see the math typesetting icon displayed in the toolbar of
+rich text fields in Wagtail admin views.

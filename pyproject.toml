@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wagtail-katex"
+description = "Math typesetting for Wagtail CMS powered by KaTeX"
+authors = [
+    {name = "ongchi", email = "ongchi@users.noreply.github.com"},
+]
+dependencies = [
+    "wagtail>=3",
+]
+requires-python = ">=3.6"
+license = {text = "MIT"}
+readme = "README.md"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Wagtail",
+    "Framework :: Wagtail :: 3",
+    "Framework :: Wagtail :: 4",
+    "Framework :: Wagtail :: 5",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/ongchi/wagtail-katex"
+"Bug Tracker" = "https://github.com/ongchi/wagtail-katex/issues"
+
+[tool.setuptools]
+packages = ["wagtailkatex"]
+
+[tool.setuptools.dynamic]
+version = {attr = "wagtailkatex.__version__"}
+
+[tool.black]
+skip_string_normalization = true
