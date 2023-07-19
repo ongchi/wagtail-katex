@@ -44,7 +44,10 @@
     modal.id = "wagtailkatex-modal";
     modal.appendChild(contentDiv);
 
-    document.querySelector("main#main").appendChild(modal);
+    const mainContent = document.querySelector("main#main");
+    modal.style.width = `${mainContent.offsetWidth}px`;
+    mainContent.appendChild(modal);
+
     katex.render(inputArea.value, katexOutputDiv, { throwOnError: false });
 
     // Event handling
@@ -56,6 +59,13 @@
     window.onclick = (event) => {
       if (event.target == modal) closeKatexModal();
     }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.map((entry) => {
+        modal.style.width = `${entry.target.offsetWidth}px`;
+      })
+    });
+    resizeObserver.observe(mainContent);
   }
 
   function closeKatexModal(onConfirm) {
