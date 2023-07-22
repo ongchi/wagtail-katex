@@ -12,6 +12,8 @@ Math typesetting for [Wagtail CMS](https://wagtail.org/) powered by **[KaTeX](ht
 
 ## Quick Start
 
+### Installation
+
 Install the package using the following command:
 
 ```sh
@@ -28,5 +30,17 @@ INSTALLED_APPS = [
 ]
 ```
 
-Now you will see the math typesetting icon displayed in the toolbar of
-rich text fields in Wagtail admin views.
+Add `RichTextField` to your page model, then you should find the math typesetting
+icon in the toolbar of rich-text editor in Wagtail admin views.
+
+### Template rendering
+
+Add required assets to your page template:
+
+```html
+<link rel="stylesheet" href="{% static 'wagtailkatex/katex/katex.min.css' %}">
+<script src="{% static 'wagtailkatex/katex/katex.min.js' %}"></script>
+<script src="{% static 'wagtailkatex/wagtailkatex-template.js' %}"></script>
+```
+
+The page content contains `KaTeX` embed should render properly.
