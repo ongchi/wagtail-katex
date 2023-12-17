@@ -4,6 +4,7 @@ from wagtail.admin.rich_text.editors.draftail import features as draftail_featur
 from wagtail import hooks
 
 from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
+from .conf import get_conf
 
 
 @hooks.register('register_rich_text_features')
@@ -27,12 +28,12 @@ def register_katex_feature(features):
                 'description': gettext('Equation'),
             },
             js=[
-                'wagtailkatex/katex/katex.min.js',
+                get_conf('js'),
                 'wagtailkatex/wagtailkatex.js',
             ],
             css={
                 'all': [
-                    'wagtailkatex/katex/katex.min.css',
+                    get_conf('css'),
                     'wagtailkatex/wagtailkatex.css',
                 ]
             },
