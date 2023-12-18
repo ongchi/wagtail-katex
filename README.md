@@ -38,9 +38,33 @@ icon in the toolbar of rich-text editor in Wagtail admin views.
 Add required assets to your page template:
 
 ```html
-<link rel="stylesheet" href="{% static 'wagtailkatex/katex/katex.min.css' %}">
-<script src="{% static 'wagtailkatex/katex/katex.min.js' %}"></script>
+{% load wagtailkatex %}
+
+<link rel="stylesheet" href="{% wagtailkatex_media 'css' %}" />
+<script src="{% wagtailkatex_media 'js' %}"></script>
 <script src="{% static 'wagtailkatex/wagtailkatex-template.js' %}"></script>
 ```
 
 The page content contains `KaTeX` embed should render properly.
+
+### Config
+
+The `KaTeX` library is linked directly to a CDN distribution by default.
+If you want to change to the nearby server,
+the path could be specified in the `settings.py` file:
+
+```python
+WAGTAIL_KATEX = {
+    "js": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"
+    "css": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"
+}
+```
+
+Alternatively, you can make your own copy in the static folder and serve it as Django static files:
+
+```python
+WAGTAIL_KATEX = {
+    "js": "my_app/katex.min.js"
+    "css": "my_app/katex.min.css"
+}
+```
