@@ -1,10 +1,10 @@
 from django.utils.translation import gettext
-
-from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail import hooks
+from wagtail.admin.rich_text.editors.draftail import \
+    features as draftail_features
 
-from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
 from .conf import get_conf
+from .richtext import KaTeXEntityElementHandler, katex_entity_decorator
 
 
 @hooks.register('register_rich_text_features')
@@ -27,15 +27,13 @@ def register_katex_feature(features):
                 'icon': 'square-root-variable',
                 'description': gettext('Equation'),
             },
-            js=[
-                get_conf('js'),
+            js= get_conf('js') + get_conf('preview') + [
                 'wagtailkatex/wagtailkatex.js',
             ],
             css={
-                'all': [
-                    get_conf('css'),
+                'all': get_conf('css') + [
                     'wagtailkatex/wagtailkatex.css',
-                ]
+                ],
             },
         ),
     )

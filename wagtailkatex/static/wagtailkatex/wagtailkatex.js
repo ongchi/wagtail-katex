@@ -10,14 +10,21 @@
   function openKatexModal(katexInput, onConfirm) {
     // Input textarea
     const inputDiv = document.createElement("div");
-    inputDiv.id = "wagtailkatex-modal-input";
+    inputDiv.id = "wagtailkatex-modal-input-div";
     const inputArea = inputDiv.appendChild(document.createElement("textarea"));
+    inputArea.id = "wagtailkatex-modal-input"
     inputArea.spellcheck = false;
     inputArea.value = katexInput;
 
     // KaTeX rendered html output
     const katexOutputDiv = document.createElement("div");
     katexOutputDiv.id = "wagtailkatex-modal-output";
+
+    // Input buffer
+    const bufferDiv = document.createElement("div");
+    bufferDiv.id = "wagtailkatex-buffer";
+    bufferDiv.className = "richtext";
+    bufferDiv.style.visibility = "hidden";
 
     // Action buttons
     const actionDiv = document.createElement("div");
@@ -37,6 +44,7 @@
     const contentDiv = document.createElement("div");
     contentDiv.id = "wagtailkatex-modal-content";
     contentDiv.appendChild(inputDiv);
+    contentDiv.appendChild(bufferDiv);
     contentDiv.appendChild(katexOutputDiv);
     contentDiv.appendChild(actionDiv);
 
@@ -48,14 +56,12 @@
     modal.style.width = `${mainContent.offsetWidth}px`;
     mainContent.appendChild(modal);
 
-    katex.render(inputArea.value, katexOutputDiv, { throwOnError: false });
+    let preview = new Preview("wagtailkatex-modal-output", "wagtailkatex-buffer", "wagtailkatex-modal-input");
+    preview.render();
 
     // Event handling
     cancelBtn.onclick = () => closeKatexModal();
     confirmBtn.onclick = () => closeKatexModal(onConfirm);
-    inputArea.addEventListener('input', (event) => {
-      katex.render(event.target.value, katexOutputDiv, { throwOnError: false });
-    });
     window.onclick = (event) => {
       if (event.target == modal) closeKatexModal();
     }
@@ -78,7 +84,6 @@
       // Verify and pass valid input to `onConfirm` to update editor state
       try {
         let texString = modal.querySelector("textarea").value;
-        katex.renderToString(texString);
         onConfirm(texString);
         modal.remove();
       } catch (e) {
@@ -167,7 +172,7 @@
         title: text,
         onMouseDown: () => this.openModal(onChange),
         dangerouslySetInnerHTML: {
-          __html: katex.renderToString(text),
+          __html: Preview.renderToString(text),
         },
       });
     }

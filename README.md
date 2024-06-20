@@ -54,17 +54,27 @@ If you want to change to the nearby server,
 the path could be specified in the `settings.py` file:
 
 ```python
-WAGTAIL_KATEX = {
-    "js": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"
-    "css": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"
+WAGTAILKATEX_SETTINGS = {
+    "js": [
+        "https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js",
+        "https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js",
+    ]
+    "css": [
+        "https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
+    ],
 }
 ```
 
 Alternatively, you can make your own copy in the static folder and serve it as Django static files:
 
 ```python
-WAGTAIL_KATEX = {
-    "js": "my_app/katex.min.js"
-    "css": "my_app/katex.min.css"
+WAGTAILKATEX_SETTINGS = {
+    "js": [
+        "my_app/katex.min.js",
+        "my_app/auto-rdner.min.js",
+    ],
+    "css": [
+        "my_app/katex.min.css"
+    ],
 }
 ```
